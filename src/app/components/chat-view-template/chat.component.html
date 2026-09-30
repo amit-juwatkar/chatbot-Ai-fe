@@ -1,0 +1,46 @@
+<section class="chat-section">
+    <!-- App Header  -->
+    <app-header [botStatus]="botStatus()"></app-header>
+
+    <!-- Chat Box Component -->
+    <app-chat-box  [messages]="messages()"></app-chat-box>
+
+    <!-- Chat Bot Form -->
+    <div class="chat-container" #chatContainer>
+        <form (ngSubmit)="send()">
+            <input 
+                type="text" 
+                name="prompt"
+                [(ngModel)]="prompt"
+                placeholder="Type your message..."
+                [class.empty]="isEmptyField"
+                [disabled]="loading"
+            />
+            <select
+                name="selectedModel"
+                [ngModel]="selectedModel()"
+                (ngModelChange)="selectedModel.set($event)"
+                #modelCtrl="ngModel"
+                required
+                [class.empty]="isEmptyField"
+                [disabled]="loading">
+                <option value="" disabled>Select Model</option>
+                @for (model of modelsList(); track model) {
+                    <option [value]="model">
+                        {{ model }}
+                    </option>
+                }
+            </select>
+            <button type="submit" [disabled]="loading">
+                {{ loading ? 'Thinking...' : 'Send' }}
+            </button>
+        </form>
+        @if(loading){
+            <div class="typing-loader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        }
+    </div>
+</section>

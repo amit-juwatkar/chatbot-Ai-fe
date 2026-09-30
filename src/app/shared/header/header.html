@@ -1,0 +1,31 @@
+<header class="chat-header">
+    <div class="header-left">
+        <h2> 
+            <span class="ChatIcon">&#129302;</span> <div><i>AI Assistant</i> <span>Powered by Ollama</span></div>
+        </h2>
+    </div>
+    <div class="right-section">
+        <div class="header-right"  [class.empty-select]="!modelService.selectedModel()">
+            <select
+                name="selectedModel"
+                [ngModel]="modelService.selectedModel()"
+                (ngModelChange)="onModelChange($event)"
+            >
+                <option value="" disabled>Select Model</option>
+
+                @for (model of modelsList(); track model) {
+                <option [value]="model">
+                    {{ model }}
+                </option>
+                }
+            </select>
+        </div>
+        <div class="header-right" [ngClass]="botStatus() === 'Offline' ? 'offline' : ''">
+            <span class="status-dot" [ngClass]="botStatus() === 'Offline' ? 'offline' : ''"></span>
+            <span>{{botStatus()}}</span>
+        </div>
+    </div>
+
+
+    
+</header>

@@ -1,0 +1,19 @@
+*{ padding:0; margin:0; box-sizing:border-box; font-family: 'Arial', sans-serif; }
+::ng-deep body{ margin:0;}
+:host ::ng-deep .ng-scrollbar-thumb {
+    background: #10a37f !important;
+    border-radius: 10px;
+}
+:host ::ng-deep .track-inner {
+     border-radius: 10px !important;
+}
+
+:host ::ng-deep  .ng-scroll-content {
+    padding-right:20px;
+}
+
+:host ::ng-deep select.empty.ng-valid, :host ::ng-deep input.ng-valid.empty.ng-touched.ng-dirty {
+    border-color: #10a37f !important; 
+    background: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(16, 163, 127, 0.12) !important;
+}

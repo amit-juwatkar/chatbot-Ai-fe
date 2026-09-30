@@ -1,0 +1,22 @@
+<div class="chat-messages">
+    <ng-scrollbar #scrollbar style="height: calc(100vh - 200px);" >
+        @for (item of msgArray(); track item.id) {
+            <div @messageAnimation
+                class="card"
+                [class.welcome-card]="item.type === 'welcome'"
+                [class.user-card]="item.type === 'user'"
+                [class.ai-card]="item.type === 'assistant'"
+                >
+                <span class="message-content ai-response"
+                    [innerHTML]="item.message">
+                </span>
+                @if (item.performanceTime) {
+                    <br>
+                    <p class="responseTime">
+                        Response Time: {{ item.performanceTime }}
+                    </p>
+                }
+            </div>
+        }
+    </ng-scrollbar>
+</div>
