@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "frontend": {
+    "chatbot-Ai-fe": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -24,10 +24,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "node_modules/highlight.js/styles/github-dark.css",
-              "src/styles.css"
-            ]
+            "styles": ["node_modules/highlight.js/styles/github-dark.css", "src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -57,16 +54,19 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "frontend:build:production"
+              "buildTarget": "chatbot-Ai-fe:build:production"
             },
             "development": {
-              "buildTarget": "frontend:build:development"
+              "buildTarget": "chatbot-Ai-fe:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
